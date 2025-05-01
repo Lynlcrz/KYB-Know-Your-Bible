@@ -1,69 +1,90 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./SignUpDesign.css"; // Import the matching CSS
 
 export default function SignUp() {
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");  // Added email state
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("🚀 Submitting:", { username, email, password }); // Add this
+  
     try {
       await axios.post("http://localhost:3000/signup", {
         username,
-        email,     // Include email in request
+        email,
         password,
       });
       alert("Sign up successful! You can now log in.");
     } catch (error) {
-      console.error(error);
-      alert("Sign up failed. Check the console for details.");
+      console.error("❌ Signup failed:", error.response?.data || error.message);
+      alert(error.response?.data?.message || "Sign up failed. Check the console.");
     }
   };
+  
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm"
-      >
-        <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
-        
-        <input
-          className="w-full p-2 mb-4 border border-gray-300 rounded"
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
+    <div className="bible-login-container">
+      <div className="bible-page-wrapper">
+        <div className="bible-left-side">
+          <h1 className="bible-text">Sign Up</h1>
+          <p className="bible-quote-section">
+            “Create your account to continue”
+            <br />
+            <span className="bible-quote-reference">– Inspired</span>
+          </p>
+               <img src="/images/Bible.png" alt="" className="bible-book-container" />
+        </div>
+        <div className="bible-right-side">
+          <div className="bible-login-card">
+            <div className="bible-login-header-container">
+            <img src="/images/LOGO.png" alt="Logo" className="bible-logo" />
 
-        {/* New Email Field */}
-        <input
-          className="w-full p-2 mb-4 border border-gray-300 rounded"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+              <h2 className="bible-login-header">Welcome!</h2>
+              <p className="bible-login-subheader">Please sign up to proceed.</p>
+            </div>
 
-        <input
-          className="w-full p-2 mb-4 border border-gray-300 rounded"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-        >
-          Sign Up
-        </button>
-      </form>
+            <form onSubmit={handleSubmit} className="bible-form">
+              <input
+                className="bible-input"
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+              <input
+                className="bible-input"
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <input
+                className="bible-input"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button type="submit" className="bible-login-button">
+                Sign Up
+              </button>
+            </form>
+
+            <p className="bible-signup-text">
+              Already have an account?{" "}
+              <Link to="/login" className="bible-create-account-link">Login</Link>
+
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Irish+Grover&family=Kreon&display=swap');
+
+body {
+  background: linear-gradient(158deg, #D9D9D9 46.79%, #77684C 95.36%);
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.signup-container {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.signup-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.signup-left-side,
+.signup-right-side {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-left-side {
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.signup-right-side {
+  justify-content: center;
+}
+
+/* Card Design */
+.signup-card {
+  border-radius: 25px;
+  background: #77684C;
+  box-shadow: 0px 16px 25px 10px rgba(67, 44, 24, 0.50);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  box-sizing: border-box;
+  width: 90%;
+  max-width: 650px;
+  margin: 1rem auto;
+  aspect-ratio: 1/1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Logo */
+.signup-logo-container {
+  text-align: center;
+}
+
+.signup-logo {
+  width: clamp(120px, 25vw, 200px);
+  height: auto;
+  margin-bottom: clamp(0.5rem, 1vw, 1rem);
+}
+
+/* Headers */
+.signup-header-container {
+  text-align: center;
+}
+
+.signup-header {
+  color: #D9D9D9;
+  font-family: "Irish Grover";
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 400;
+}
+
+.signup-subheader {
+  color: rgba(217, 217, 217, 0.51);
+  font-family: Kreon;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  font-weight: 400;
+  margin-top: clamp(-1rem, -2vw, -0.5rem);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* Form */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.signup-input {
+  height: clamp(2.5rem, 5vw, 3rem);
+  padding: 0 0.75rem;
+  border-radius: 4px;
+  border: none;
+  background: #D9D9D9;
+  color: rgba(59, 35, 19, 0.50);
+  font-family: "Inter";
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+/* Button */
+.signup-button {
+  height: clamp(3rem, 6vw, 3.75rem);
+  color: #FFF;
+  font-family: Inter;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  background: #3B2313;
+  cursor: pointer;
+  width: 100%;
+  max-width: 500px;
+  transition: all 0.3s ease;
+}
+
+.signup-button:hover {
+  background-color: #D9D9D9;
+  color: #3B2313;
+}
+
+/* Account prompt */
+.signup-login-prompt {
+  text-align: center;
+  color: rgba(59, 35, 19, 0.50);
+  font-family: Inter;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-style: italic;
+  margin-top: -1.5rem;
+}
+
+.signup-login-link {
+  color: #3B2313;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-login-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Layouts */
+@media (min-width: 768px) {
+  .signup-page-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+
+  .signup-left-side {
+    width: 50%;
+    padding-right: 2rem;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .signup-right-side {
+    width: 50%;
+    padding-left: 2rem;
+  }
+
+  .signup-card {
+    width: 80%;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .signup-page-wrapper {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .signup-right-side {
+    order: 1;
+    margin-bottom: 2rem;
+  }
+
+  .signup-left-side {
+    order: 2;
+    text-align: center;
+    align-items: center;
+  }
+
+  .signup-card {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-page-wrapper {
+    padding: 0.5rem;
+  }
+
+  .signup-card {
+    width: 85%;
+    padding: 1.2rem;
+  }
+
+  .signup-form {
+    gap: 1.2rem;
+  }
+}
